@@ -26,8 +26,19 @@ const checkPerm = (str1, str2) => {
     return true;
 }
 
+const urlify = (str) => {
+    // return str.split(' ').join('%20'); easy solution
+    let retStr = '';
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === ' ') retStr += '%20';
+        else retStr += str[i];
+    }
+    return retStr;
+};
+
 
 module.exports = {
     isUnique,
-    checkPerm
+    checkPerm,
+    urlify
 }
