@@ -47,9 +47,27 @@ const paliPerm = str => {
   );
 };
 
+const oneAway = (str, fixedStr) => {
+  let longest = str.length > fixedStr.length ? str : fixedStr;
+  let shortest = str.length <= fixedStr.length ? str : fixedStr;
+    for (let i = 0; i < longest.length; i++) {
+        if (longest[i] !== shortest[i]) {
+            if ((longest.length - 1) === shortest.length) {
+                shortest = shortest.slice(0, i) + longest[i] + shortest.slice(i);
+            }
+            else if (longest.length === shortest.length) {
+                shortest = shortest.slice(0, i) + longest[i] + shortest.slice(i + 1);
+            }
+            return shortest === longest;
+        }
+    }
+    return false;
+};
+
 module.exports = {
   isUnique,
   checkPerm,
   urlify,
-  paliPerm
+  paliPerm,
+  oneAway
 };

@@ -3,10 +3,11 @@ const {
   isUnique,
   checkPerm,
   urlify,
-  paliPerm
+  paliPerm,
+  oneAway
 } = require('../cracking-the-coding-interview/arraysAndStrings');
 
-describe('isUnique', () => {
+xdescribe('isUnique', () => {
   it('should return a boolean', () => {
     expect(isUnique('test')).to.be.a('boolean');
   });
@@ -21,7 +22,7 @@ describe('isUnique', () => {
   });
 });
 
-describe('checkPerm', () => {
+xdescribe('checkPerm', () => {
   it('returns a boolean', () => {
     expect(checkPerm('yah', 'woo')).to.be.a('boolean');
   });
@@ -36,7 +37,7 @@ describe('checkPerm', () => {
   });
 });
 
-describe('urlify', () => {
+xdescribe('urlify', () => {
   it('returns a string', () => {
     expect(urlify('yah girl')).to.be.a('string');
   });
@@ -56,7 +57,7 @@ describe('urlify', () => {
   });
 });
 
-describe('paliPerm', () => {
+xdescribe('paliPerm', () => {
   it('returns a boolean', () => {
     expect(paliPerm('yah')).to.be.a('boolean');
   });
@@ -67,5 +68,27 @@ describe('paliPerm', () => {
   it('returns false for non-palindrome permutations', () => {
     expect(paliPerm('hello')).to.be.false;
     expect(paliPerm('goodbye')).to.be.false;
+  });
+});
+
+describe('oneAway', () => {
+  it('returns a boolean', () => {
+    expect(oneAway('beat', 'bet')).to.be.a('boolean');
+  });
+  it('returns true for strings that need one character insert', () => {
+    expect(oneAway('bet', 'beat')).to.be.true;
+    expect(oneAway('yah', 'yeah')).to.be.true;
+  });
+  it('returns true for strings that need one character removed', () => {
+    expect(oneAway('beat', 'bet')).to.be.true;
+    expect(oneAway('yeah', 'yah')).to.be.true;
+  });
+  it('returns true for strings that need one character replaced', () => {
+    expect(oneAway('beat', 'best')).to.be.true;
+    expect(oneAway('yeas', 'yeah')).to.be.true;
+  });
+  it('returns false for strings that need more than one edit', () => {
+    expect(oneAway('beat', 'beat it')).to.be.false;
+    expect(oneAway('howdy', 'hello')).to.be.false;
   });
 });
