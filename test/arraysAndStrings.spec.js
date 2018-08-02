@@ -2,7 +2,8 @@ const { expect } = require('chai');
 const {
   isUnique,
   checkPerm,
-  urlify
+  urlify,
+  paliPerm
 } = require('../cracking-the-coding-interview/arraysAndStrings');
 
 describe('isUnique', () => {
@@ -36,15 +37,35 @@ describe('checkPerm', () => {
 });
 
 describe('urlify', () => {
-    it('returns a string', () => {
-        expect(urlify('yah girl')).to.be.a('string');
-    })
-    it('returns URLified string for two words', () => {
-        expect(urlify('hello bob')).to.equal('hello%20bob');
-        expect(urlify('goodbye sam')).to.equal('goodbye%20sam');
-    })
-    it('returns URLified version of three or more words', () => {
-        expect(urlify('see you later alligator')).to.equal('see%20you%20later%20alligator');
-        expect(urlify('been far too long in the midnight sea oh what is becoming of me')).to.equal('been%20far%20too%20long%20in%20the%20midnight%20sea%20oh%20what%20is%20becoming%20of%20me');
-    })
-})
+  it('returns a string', () => {
+    expect(urlify('yah girl')).to.be.a('string');
+  });
+  it('returns URLified string for two words', () => {
+    expect(urlify('hello bob')).to.equal('hello%20bob');
+    expect(urlify('goodbye sam')).to.equal('goodbye%20sam');
+  });
+  it('returns URLified version of three or more words', () => {
+    expect(urlify('see you later alligator')).to.equal(
+      'see%20you%20later%20alligator'
+    );
+    expect(
+      urlify('been far too long in the midnight sea oh what is becoming of me')
+    ).to.equal(
+      'been%20far%20too%20long%20in%20the%20midnight%20sea%20oh%20what%20is%20becoming%20of%20me'
+    );
+  });
+});
+
+describe('paliPerm', () => {
+  it('returns a boolean', () => {
+    expect(paliPerm('yah')).to.be.a('boolean');
+  });
+  it('returns true for strings that could be palindromes', () => {
+    expect(paliPerm('rraacce')).to.be.true;
+    expect(paliPerm('sttsa')).to.be.true;
+  });
+  it('returns false for non-palindrome permutations', () => {
+    expect(paliPerm('hello')).to.be.false;
+    expect(paliPerm('goodbye')).to.be.false;
+  });
+});
