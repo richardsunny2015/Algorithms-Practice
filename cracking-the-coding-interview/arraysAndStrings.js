@@ -64,7 +64,24 @@ const oneAway = (str, fixedStr) => {
 };
 
 const strCompress = str => {
-  return str;
+  let retStr = '';
+  let letterCount = 0;
+  let currenctCharacter = str[0];
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === currenctCharacter) {
+      letterCount++;
+    } else {
+      retStr +=
+        letterCount > 1 ? currenctCharacter + letterCount : currenctCharacter;
+      letterCount = 1;
+      currenctCharacter = str[i];
+    }
+    if (i + 1 === str.length) {
+      retStr +=
+        letterCount > 1 ? currenctCharacter + letterCount : currenctCharacter;
+    }
+  }
+  return retStr;
 };
 
 module.exports = {
