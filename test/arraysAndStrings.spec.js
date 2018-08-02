@@ -4,7 +4,8 @@ const {
   checkPerm,
   urlify,
   paliPerm,
-  oneAway
+  oneAway,
+  strCompress
 } = require('../cracking-the-coding-interview/arraysAndStrings');
 
 xdescribe('isUnique', () => {
@@ -71,7 +72,7 @@ xdescribe('paliPerm', () => {
   });
 });
 
-describe('oneAway', () => {
+xdescribe('oneAway', () => {
   it('returns a boolean', () => {
     expect(oneAway('beat', 'bet')).to.be.a('boolean');
   });
@@ -92,3 +93,25 @@ describe('oneAway', () => {
     expect(oneAway('howdy', 'hello')).to.be.false;
   });
 });
+
+describe('strCompress', () => {
+    it('returns a string', () => {
+        expect(strCompress('abc')).to.be.a('string');
+    })
+    it('returns a compressed string with non-repeating characters', () => {
+        expect(strCompress('aaaaaabbbbbcccc')).to.equal('a6b5c4');
+        expect(strCompress('xxxyyzzzz')).to.equal('x3y2z4');
+    })
+    it('returns a compressed string with repeating characters', () => {
+        expect(strCompress('aaabbaaaa')).to.equal('a3b2a4');
+        expect(strCompress('yyyzzzxxxyy')).to.equal('y3z3x3y2');
+    })
+    it('doesn\'t compress single characters', () => {
+        expect(strCompress('abbbccc')).to.equal('ab3c3');
+        expect(strCompress('deeeffdrrh')).to.equal('de3f2dr2h');
+    })
+    it('returns original string if there is no compression', () => {
+        expect(strCompress('abc')).to.equal('abc');
+        expect(strCompress('abcdefghijklmnopqrstuvwxyz')).to.equal('abcdefghijklmnopqrstuvwxyz');
+    })
+})
