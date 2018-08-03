@@ -131,14 +131,17 @@ describe('rotateMatrix', () => {
       [1, 2, 3, 4, 5]
     ];
   });
+  it('returns an empty array if given an empty array', () => {
+    expect(rotateMatrix([])).to.eql([]);
+  })
   it('returns an array of arrays', () => {
     expect(rotateMatrix(test)[0]).to.be.an('array');
   });
   it('rotates a two by two matrix', () => {
-    expect(rotateMatrix(test)).to.equal([[1, 1], [2, 2]]);
+    expect(rotateMatrix(test)).to.eql([[1, 1], [2, 2]]);
   });
   it('rotates a 5x5 matrix', () => {
-    expect(rotateMatrix(test1)).to.equal([
+    expect(rotateMatrix(test1)).to.eql([
       [1, 1, 1, 1, 1],
       [2, 2, 2, 2, 2],
       [3, 3, 3, 3, 3],

@@ -85,7 +85,13 @@ const strCompress = str => {
 };
 
 const rotateMatrix = (img) => {
-  return img;
+  const retMatrix = [];
+  for (let i = 0; i < img.length; i++) {
+    for (let j = 0; j < img[i].length; j++) {
+      retMatrix[j] = retMatrix[j] ? retMatrix[j].concat([img[i][j]]) : [img[i][j]]
+    }
+  }
+  return retMatrix;
 }
 
 module.exports = {
