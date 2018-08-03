@@ -84,11 +84,16 @@ const strCompress = str => {
   return retStr;
 };
 
+const rotateMatrix = (img) => {
+  return img;
+}
+
 module.exports = {
   isUnique,
   checkPerm,
   urlify,
   paliPerm,
   oneAway,
-  strCompress
+  strCompress,
+  rotateMatrix
 };
