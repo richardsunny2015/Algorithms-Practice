@@ -4,7 +4,7 @@ const {
   Node
 } = require('../cracking-the-coding-interview/linkedLists');
 
-describe('Node', () => {
+xdescribe('Node', () => {
   let testNode;
   beforeEach(() => {
     testNode = new Node(5);
@@ -29,7 +29,7 @@ describe('LinkedList', () => {
   beforeEach(() => {
     testLinkedList = new LinkedList();
   });
-  describe('prepend', () => {
+  xdescribe('prepend', () => {
     beforeEach(() => {
       testLinkedList.prepend(5);
     });
@@ -42,8 +42,34 @@ describe('LinkedList', () => {
       expect(testLinkedList.head.next.data).to.equal(5);
     });
     it('can prepend 0', () => {
-        testLinkedList.prepend(0);
-        expect(testLinkedList.head.data).to.equal(0);
-    })
+      testLinkedList.prepend(0);
+      expect(testLinkedList.head.data).to.equal(0);
+    });
+  });
+  describe('removeDups', () => {
+    let numsArr;
+    let length;
+    let values;
+    beforeEach(() => {
+      length = 0;
+      values = [];
+      numsArr = [1, 2, 1, 3, 5, 2];
+      numsArr.forEach(num => {
+        testLinkedList.prepend(num);
+      });
+      testLinkedList.removeDups();
+      let current = testLinkedList.head;
+      while (current) {
+        length++;
+        values.unshift(current.data);
+        current = current.next;
+      }
+    });
+    it('reduces a linked list with duplicates', () => {
+      expect(length).to.equal(4);
+    });
+    it('removes duplicate values', () => {
+      expect(values).to.eql([1, 3, 5, 2]);
+    });
   });
 });
