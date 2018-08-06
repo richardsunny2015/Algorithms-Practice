@@ -12,6 +12,23 @@ class LinkedList {
         this.head = newHead;
     }
   }
+  removeDups() {
+    if (!this.head) return;
+    let hashTable = {};
+    hashTable[this.head.data] = true;
+    let previous = this.head;
+    let current = this.head.next;
+    while (current) {
+      if (hashTable.hasOwnProperty(current.data)) {
+        let newNext = current.next;
+        previous.next = newNext;
+      } else {
+        hashTable[current.data] = true;
+        previous = previous.next;
+      }
+      current = previous ? previous.next : null;
+    }
+  }
 }
 
 class Node {
