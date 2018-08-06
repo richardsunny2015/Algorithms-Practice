@@ -119,7 +119,7 @@ xdescribe('strCompress', () => {
   });
 });
 
-describe('rotateMatrix', () => {
+xdescribe('rotateMatrix', () => {
   let test, test1;
   beforeEach(() => {
     test = [[1, 2], [1, 2]];
