@@ -1,17 +1,24 @@
 class LinkedList {
-    constructor() {
-        this.head = null;
+  constructor() {
+    this.head = null;
+  }
+  prepend(data) {
+    if (typeof data === 'undefined') return;
+    if (!this.head) {this.head = new Node(data);}
+    else {
+        const oldHead = this.head;
+        const newHead = new Node(data);
+        newHead.next = oldHead;
+        this.head = newHead;
     }
-    prepend(data) {
-
-    }
+  }
 }
 
 class Node {
-    constructor(data) {
-        this.data = data || null;
-        this.next = null;
-    }
+  constructor(data) {
+    this.data = typeof data === 'undefined' ? null : data;
+    this.next = null;
+  }
 }
 
-module.exports = {LinkedList, Node};
+module.exports = { LinkedList, Node };
