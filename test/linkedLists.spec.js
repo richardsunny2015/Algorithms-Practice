@@ -46,7 +46,7 @@ describe('LinkedList', () => {
       expect(testLinkedList.head.data).to.equal(0);
     });
   });
-  describe('removeDups', () => {
+  xdescribe('removeDups', () => {
     let numsArr;
     let length;
     let values;
@@ -71,5 +71,24 @@ describe('LinkedList', () => {
     it('removes duplicate values', () => {
       expect(values).to.eql([1, 3, 5, 2]);
     });
+  });
+  describe('kToLast', () => {
+    let linkedListOne, arr;
+    beforeEach(() => {
+      arr = [5, 4, 3, 2, 1];
+      linkedListOne = new LinkedList();
+      arr.forEach(elem => {
+        linkedListOne.prepend(elem);
+      });
+    });
+    it('returns null if less than one', () => {
+      expect(linkedListOne.kToLast(0)).to.be.null;
+    })
+    it('returns tail when given one as a param', () => {
+      expect(linkedListOne.kToLast(1)).to.equal(5);
+    })
+    it('returns the correct k data with any number', () => {
+      expect(linkedListOne.kToLast(4)).to.equal(2);
+    })
   });
 });
