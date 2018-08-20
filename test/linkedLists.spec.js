@@ -84,5 +84,11 @@ describe('LinkedList', () => {
     it('returns null if less than one', () => {
       expect(linkedListOne.kToLast(0)).to.be.null;
     })
+    it('returns tail when given one as a param', () => {
+      expect(linkedListOne.kToLast(1)).to.equal(5);
+    })
+    it('returns the correct k data with any number', () => {
+      expect(linkedListOne.kToLast(4)).to.equal(2);
+    })
   });
 });
