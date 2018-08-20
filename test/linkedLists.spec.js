@@ -89,6 +89,7 @@ describe('LinkedList', () => {
     })
     it('returns the correct k data with any number', () => {
       expect(linkedListOne.kToLast(4)).to.equal(2);
+      expect(linkedListOne.kToLast(5)).to.equal(1);
     })
   });
 });

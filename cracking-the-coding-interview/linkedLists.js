@@ -29,6 +29,23 @@ class LinkedList {
       current = previous ? previous.next : null;
     }
   }
+  kToLast(num) {
+    if (num < 1) return null;
+    let length = 0;
+    let current = this.head;
+    while (current !== null) {
+      length++;
+      current = current.next;
+    }
+    length -= num;
+    current = this.head;
+    while (length > 0) {
+      length--;
+      current = current.next;
+      console.log(current.data);
+    }
+    return current.data;
+  }
 }
 
 class Node {
