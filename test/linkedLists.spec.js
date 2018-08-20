@@ -140,7 +140,7 @@ describe('LinkedList', () => {
     });
     it('removes the correct node', () => {
       expect(newArrOne).to.deep.equal([1, 2, 4, 5])
-      expect(newArrTwo).to.deep.equal([22, 53, 99, 80, 70])
+      expect(newArrTwo).to.deep.equal([22, 53, 45, 80, 70])
     });
   });
 });
