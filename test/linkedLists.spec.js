@@ -72,7 +72,7 @@ describe('LinkedList', () => {
       expect(values).to.eql([1, 3, 5, 2]);
     });
   });
-  describe('kToLast', () => {
+  xdescribe('kToLast', () => {
     let linkedListOne, arr;
     beforeEach(() => {
       arr = [5, 4, 3, 2, 1];
@@ -83,13 +83,64 @@ describe('LinkedList', () => {
     });
     it('returns null if less than one', () => {
       expect(linkedListOne.kToLast(0)).to.be.null;
-    })
+    });
     it('returns tail when given one as a param', () => {
       expect(linkedListOne.kToLast(1)).to.equal(5);
-    })
+    });
     it('returns the correct k data with any number', () => {
       expect(linkedListOne.kToLast(4)).to.equal(2);
       expect(linkedListOne.kToLast(5)).to.equal(1);
-    })
+    });
+  });
+  describe('deleteMiddleNode', () => {
+    let linkedListOne,
+      linkedListTwo,
+      arrOne,
+      arrTwo,
+      lengthOne,
+      lengthTwo,
+      newArrOne,
+      newArrTwo;
+    beforeEach(() => {
+      arrOne = [5, 4, 3, 2, 1]; // 1, 2, 3, 4, 5
+      arrTwo = [70, 80, 99, 45, 53, 22]; // 22, 53, 45, 99, 80, 70
+      linkedListOne = new LinkedList();
+      linkedListTwo = new LinkedList();
+      arrOne.forEach(elem => {
+        linkedListOne.prepend(elem);
+      });
+      arrTwo.forEach(elem => {
+        linkedListTwo.prepend(elem);
+      });
+      lengthOne = 0;
+      lengthTwo = 0;
+      newArrOne = [];
+      newArrTwo = [];
+      let currentOne = linkedListOne.head;
+      let currentTwo = linkedListTwo.head;
+      linkedListOne.deleteMiddleNode();
+      linkedListTwo.deleteMiddleNode();
+      while (currentOne !== null) {
+        newArrOne.push(currentOne.data)
+        lengthOne++;
+        currentOne = currentOne.next;
+      }
+      while (currentTwo !== null) {
+        newArrTwo.push(currentTwo.data)
+        lengthTwo++;
+        currentTwo = currentTwo.next;
+      }
+    });
+    it('returns undefined', () => {
+      expect(linkedListOne.deleteMiddleNode()).to.be.undefined;
+    });
+    it('makes the linkedList smaller', () => {
+      expect(lengthOne).to.equal(4);
+      expect(lengthTwo).to.equal(5);
+    });
+    it('removes the correct node', () => {
+      expect(newArrOne).to.deep.equal([1, 2, 4, 5])
+      expect(newArrTwo).to.deep.equal([22, 53, 99, 80, 70])
+    });
   });
 });
