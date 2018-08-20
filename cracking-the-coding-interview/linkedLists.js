@@ -4,12 +4,13 @@ class LinkedList {
   }
   prepend(data) {
     if (typeof data === 'undefined') return;
-    if (!this.head) {this.head = new Node(data);}
-    else {
-        const oldHead = this.head;
-        const newHead = new Node(data);
-        newHead.next = oldHead;
-        this.head = newHead;
+    if (!this.head) {
+      this.head = new Node(data);
+    } else {
+      const oldHead = this.head;
+      const newHead = new Node(data);
+      newHead.next = oldHead;
+      this.head = newHead;
     }
   }
   removeDups() {
@@ -45,6 +46,21 @@ class LinkedList {
       console.log(current.data);
     }
     return current.data;
+  }
+  deleteMiddleNode() {
+    let length = 0;
+    let current = this.head;
+    while (current !== null) {
+      length++;
+      current = current.next;
+    }
+    length = Math.floor(length / 2) - 1;
+    current = this.head;
+    while (length) {
+      current = current.next;
+      length--;
+    }
+    current.next = current.next.next;
   }
 }
 
