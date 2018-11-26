@@ -24,7 +24,7 @@ xdescribe('Node', () => {
     expect(testNode.next.data).to.equal(4);
   });
 });
-describe('LinkedList', () => {
+xdescribe('LinkedList', () => {
   let testLinkedList;
   beforeEach(() => {
     testLinkedList = new LinkedList();

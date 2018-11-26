@@ -3,7 +3,7 @@ const {
   mergeSortedArrays
 } = require('../cracking-the-coding-interview/recursionAndDynamicProgramming');
 
-describe('mergeSortedArrays', () => {
+xdescribe('mergeSortedArrays', () => {
   it('is a function', () => {
     expect(mergeSortedArrays).to.be.a('function');
   });
