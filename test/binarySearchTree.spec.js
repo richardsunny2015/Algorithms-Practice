@@ -5,7 +5,7 @@ const {
 } = require('../cracking-the-coding-interview/binarySearchTree');
 
 
-describe('inOrderTraverse', () => {
+xdescribe('inOrderTraverse', () => {
     let firstExample, secondExample, thirdExample;
     beforeEach(() => {
         firstExample = new BinarySearchTree(5);
@@ -23,9 +23,9 @@ describe('inOrderTraverse', () => {
         secondExample.right.right.right = new BinarySearchTree(27);
     })
     it('takes an array and returns an array of all elements in order', () => {
-        expect(inOrderTraverse(firstExample, [])).to.eql([4, 5, 6])
+        expect(inOrderTraverse(firstExample)).to.eql([4, 5, 6])
     })
     it('can handle an even harder example', () => {
-        expect(inOrderTraverse(secondExample, [])).to.eql([6, 7, 8, 9, 10, 12, 15, 22, 25, 27])
+        expect(inOrderTraverse(secondExample)).to.eql([6, 7, 8, 9, 10, 12, 15, 22, 25, 27])
     })
 })
