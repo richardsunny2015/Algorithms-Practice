@@ -1,4 +1,4 @@
-const {ims} = require('../advent-of-code/day2')
+const {ims, ims2} = require('../advent-of-code/day2')
 const input = [
     'wkzhyfdpluzeqvajtbbosngkxc',
     'wrzhyfdplumeqvajtbioskfksc',
@@ -252,4 +252,5 @@ const input = [
     'wrzhkfdpoumeqvautbiosngkxc'
 ]
 
-console.log(ims(input))
+console.log('ims', ims(input))
+console.log('ims2', ims2(input))
