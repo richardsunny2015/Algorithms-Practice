@@ -22,6 +22,36 @@
 
 // What is the checksum for your list of box IDs?
 
-const ims = () => {};
+const ims = boxIds => {
+  // loop through ids
+  // loop through individual id
+  // keep count of letter instances in lookup table
+  // loop through lookup table to see if a letter appears twice or 3 times
+  // increment twice and thrice counter if applies
+  // multiply twice and thrice counters
+  let twice = 0;
+  let thrice = 0;
+  for (let i = 0; i < boxIds.length; i++) {
+    const lookupTable = {};
+    const boxId = boxIds[i];
+    let isTwice = false;
+    let isThrice = false;
+    for (let j = 0; j < boxId.length; j++) {
+      const letter = boxId[j];
+      if (lookupTable.hasOwnProperty(letter)) lookupTable[letter]++;
+      else lookupTable[letter] = 1;
+    }
+    for (let key in lookupTable) {
+      if (lookupTable.hasOwnProperty(key)) {
+        if (isThrice && isTwice) break;
+        if (lookupTable[key] === 3) isThrice = true;
+        if (lookupTable[key] === 2) isTwice = true;
+      }
+    }
+    if (isThrice) thrice++
+    if (isTwice) twice++
+  }
+  return thrice * twice
+};
 
 module.exports = { ims };
