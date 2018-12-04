@@ -1,7 +1,7 @@
 const { expect } = require('chai')
 const chronalCollaboration = require('../advent-of-code/chronalCollaboration')
 
-describe('chronalCollaboration', () => {
+xdescribe('chronalCollaboration', () => {
     it('returns a number', () => {
         expect(chronalCollaboration('')).to.be.a('number')
     })
