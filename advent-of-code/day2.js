@@ -71,7 +71,28 @@ const ims = boxIds => {
 // What letters are common between the two correct box IDs? (In the example above, this is found by removing the differing character from either ID, producing fgij.)
 
 const ims2 = boxIds => {
-
+    // loop through boxIds
+    // loop through the rest of the boxIds
+    // compare outer boxId with inner boxId
+    // count differences and keep track of the index of last difference
+    // if difference is more than one, break out of inner loop;
+    // after loop finishes, if difference is one, return str.slice(0, index) + str.slice(index+1)
+    for (let i = 0; i < boxIds.length; i++) {
+        const word = boxIds[i]
+        for (let j = i + 1; j < boxIds.length; j++) {
+            const wordToCompare = boxIds[j]
+            let differences = 0;
+            let lastIndexOfDifference = -1
+            for (let k = 0; k < wordToCompare.length; k++) {
+                if (wordToCompare[k] !== word[k]) {
+                    differences++
+                    lastIndexOfDifference = k
+                }
+                if (differences > 1) break;
+            }
+            if (differences === 1) return wordToCompare.slice(0, lastIndexOfDifference) + wordToCompare.slice(lastIndexOfDifference + 1)
+        }
+    }
 }
 
 module.exports = { ims, ims2 };
