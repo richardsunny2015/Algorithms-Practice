@@ -26,4 +26,19 @@ describe('ims2', () => {
     it('returns a string', () => {
         expect(ims2(['aab', 'aac'])).to.be.a('string')
     })
+    it('returns correct string', () => {
+        expect(ims2(['aab', 'aac'])).to.equal('aa')
+    })
+    it('can handle harder inputs', () => {
+        expect(ims2([
+            'abcde',
+            'fghij',
+            'klmno',
+            'pqrst',
+            'fguij',
+            'axcye',
+            'wvxyz'
+        ]))
+        .to.equal('fgij')
+    })
 })
