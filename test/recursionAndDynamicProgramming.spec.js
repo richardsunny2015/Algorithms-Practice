@@ -1,6 +1,7 @@
 const { expect } = require('chai');
 const {
-  mergeSortedArrays
+  mergeSortedArrays,
+  tripleStep
 } = require('../cracking-the-coding-interview/recursionAndDynamicProgramming');
 
 xdescribe('mergeSortedArrays', () => {
@@ -38,3 +39,9 @@ xdescribe('mergeSortedArrays', () => {
     ]);
   });
 });
+
+describe('tripleStep', () => {
+  it('returns a number', () => {
+    expect(tripleStep(4)).to.be.a('number')
+  })
+})

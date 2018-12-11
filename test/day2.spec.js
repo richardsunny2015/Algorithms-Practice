@@ -22,7 +22,7 @@ xdescribe('ims', () => {
     })
 })
 
-describe('ims2', () => {
+xdescribe('ims2', () => {
     it('returns a string', () => {
         expect(ims2(['aab', 'aac'])).to.be.a('string')
     })
