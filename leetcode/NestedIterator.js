@@ -51,13 +51,14 @@ NestedIterator.prototype.next = function() {
     return retVal
 };
 
-
+// this is essentially the meat and potatoes of my solution
 var flatten = function(iterator/* type Array */) {
-    let retArr = []
+    let retArr = [] // create an array to eventually return
     for (let i = 0; i < iterator.length; i++) {
-        if (iterator[i].isInteger()) {
+        if (iterator[i].isInteger()) { // if this element is an integer, push the value
             retArr.push(iterator[i].getInteger())
-        } else {
+        } else { // otherwise, reassign the array to be itself concatted with the recursive call of
+            // the iterator's list
             retArr = retArr.concat(flatten(iterator[i].getList()))
         }
     }
