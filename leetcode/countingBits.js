@@ -21,10 +21,12 @@ function countingBits(num) {
 }
 
 function howManyOnes(num) {
-    let count = 0
-    while (num > 0) {
-        count += num & 1
-        num >>= 1
+    let count = 0 // initiate initial count that we will ultimately return
+    while (num > 0) { // loop until num is 0
+        count += num & 1 // add the AND bitwise operation of current num and 1
+            // aka: count++ when there is a 1 on the rightmost bit
+        num >>= 1 // reassign num to be a shift to the right one bit
+        // example: 10 = 2, 2 >> 1 = 1
     }
     return count
 }
