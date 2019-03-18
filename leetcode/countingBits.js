@@ -13,9 +13,9 @@ Output: [0,1,1,2,1,2]
 */
 
 function countingBits(num) {
-    let counts = []
-    for (let i = 0; i <= num; i++) {
-        counts.push(howManyOnes(i))
+    let counts = [] // initiate an array that we will ultimately return
+    for (let i = 0; i <= num; i++) { // loop from 0 to num inclusive
+        counts.push(howManyOnes(i)) // push the result of howManyOnes at i into counts
     }
     return counts
 }
