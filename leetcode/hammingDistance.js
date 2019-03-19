@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 /* The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
 
 Given two integers x and y, calculate the Hamming distance.
@@ -17,3 +18,13 @@ Explanation:
        ↑   ↑
 
 The above arrows point to positions where the corresponding bits are different. */
+
+function hammingDistance(x, y) {
+    let count = 0;
+    let xor = x ^ y
+    while (xor > 0) {
+        count += xor & 1
+        xor >>= 1
+    }
+    return count
+}
