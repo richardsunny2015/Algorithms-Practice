@@ -19,10 +19,13 @@ In the example above, if we want to search the value 5, since there is no node w
 
 Note that an empty tree is represented by NULL, therefore you would see the expected output (serialized tree format) as [], not null. */
 
-function searchBST(node, value) {
-    if (!node) return null
-    if (node.value === value) return node
-    return node.value < value ? searchBST(node.right, value) : searchBST(node.left, value)
+function searchBST(node, target) {
+    if (!node) return null // if node is null, return null
+    if (node.value === target) return node // if the value of the current node equals value, return the node
+    /* If the value of the current node is less than the target,
+    return the results of the search on the right node. Otherwise,
+    return the results of the search on the left node. */
+    return node.value < target ? searchBST(node.right, target) : searchBST(node.left, target)
 }
 
 module.exports = searchBST
