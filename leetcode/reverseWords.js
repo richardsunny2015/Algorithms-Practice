@@ -8,16 +8,16 @@ Note: In the string, each word is separated by single space and there will
 not be any extra space in the string. */
 
 function reverseWords(s) {
-    const splittedStr = s.split(' ')
+    const splittedStr = s.split(' ') // split the sentence into words
     return splittedStr
-        .map(reverse)
-        .join(' ')
+        .map(reverse) // map over each word and call reverse
+        .join(' ') // join words and add spaces between them
 }
 
 function reverse(str) {
-    let reversed = ''
+    let reversed = '' // initialize return value
     for (let i = 0; i < str.length; i++) {
-        reversed = str[i] + reversed
+        reversed = str[i] + reversed // add current letter to the front of our return value
     }
     return reversed
 }
