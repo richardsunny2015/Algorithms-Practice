@@ -36,3 +36,29 @@ Note:
 The number of nodes in the given tree will be between 1 and 100.
 Each node will have a unique integer value from 0 to 1000. */
 
+
+function increasingBST(node) {
+    const arr = treeAsArray(node)
+    return buildTree(arr)
+}
+
+function treeAsArray(node) {
+    return !node
+        ? []
+        : [...treeAsArray(node.left), node.val, ...treeAsArray(node.right)]
+}
+
+function buildTree(arr) {
+    const head = new TreeNode(arr[0])
+    let current = head
+    for (let i = 1; i < arr.length; i++) {
+        current.right = new TreeNode(arr[i])
+        current = current.right
+    }
+    return head
+}
+
+function TreeNode(val) {
+    this.val = val;
+    this.left = this.right = null;
+}
