@@ -38,27 +38,31 @@ Each node will have a unique integer value from 0 to 1000. */
 
 
 function increasingBST(node) {
-    const arr = treeAsArray(node)
-    return buildTree(arr)
+    const arr = treeAsArray(node) // Create an array using the head node and helper function
+    return buildTree(arr) // build a tree using that array
 }
 
 function treeAsArray(node) {
-    return !node
-        ? []
-        : [...treeAsArray(node.left), node.val, ...treeAsArray(node.right)]
+    return !node // if node is null
+        ? [] // return and empty array
+        : [...treeAsArray(node.left), // else spread the array from the left side
+            node.val, // add node.val to arr
+            ...treeAsArray(node.right)] // spread the array from the right side
+        // and return that array
 }
 
 function buildTree(arr) {
-    const head = new TreeNode(arr[0])
-    let current = head
+    const head = new TreeNode(arr[0]) // instantiate a head in which you will return
+    let current = head // set current to head
     for (let i = 1; i < arr.length; i++) {
-        current.right = new TreeNode(arr[i])
-        current = current.right
+        current.right = new TreeNode(arr[i]) /* set the right property of current to
+        a new tree node with the value of array at index i as the value of the new tree node */
+        current = current.right // set current to be the right property of current
     }
     return head
 }
 
-function TreeNode(val) {
+function TreeNode(val) { // basic tree node constructor
     this.val = val;
     this.left = this.right = null;
 }
