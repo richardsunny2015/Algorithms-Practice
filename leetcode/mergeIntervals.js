@@ -11,3 +11,24 @@ Input: [[1,4],[4,5]]
 Output: [[1,5]]
 Explanation: Intervals [1,4] and [4,5] are considered overlapping. */
 
+function Interval(start, end) { // Interval constructor
+    this.start = start;
+    this.end = end;
+}
+
+function mergeIntervals(intervals) {
+    if (!intervals.length) return intervals
+    intervals.sort((a, b) => (a.start !== b.start ? a.start - b.start : a.end - b.end))
+    let prev = intervals[0]
+    let result = [prev]
+    for (let i = 0; i < intervals.length; i++) {
+        let curr = intervals[i]
+        if (curr.start <= prev.end) {
+            prev.end = Math.max(prev.end, curr.end)
+        } else {
+            result.push(curr)
+            prev = curr
+        }
+    }
+    return result
+}
