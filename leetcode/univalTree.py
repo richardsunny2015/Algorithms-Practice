@@ -30,9 +30,22 @@
 
 class Solution:
     def isUnivalTree(self, root: TreeNode) -> bool:
-        return self.helper(root, root.val)
+        return self.helper(root, root.val) # call helper function
         
     def helper(self, root, target):
+        # In helper, we check to see if the root is None.
+        # If it is, then we know that it's True because we
+        # have travelled down the whole tree.
         if root is None: return True
+        # If the value of root is not equal to the target,
+        # we return False because if it is a univalued tree
+        # we would never reach a case where the value of the root
+        # is not equal to the value of the target.
         elif root.val != target: return False
+        # This last case is for when we aren't at the bottom
+        # of the tree yet, but the value of the root is equal to the target.
+        # If that's the case we want to return the results of the left tree
+        # and the right tree. Also, we check to see if both results are true.
+        # If for whatever reason one recursive call is False, it will bubble up
+        # to the first call.
         else: return self.helper(root.left, target) and self.helper(root.right, target)
