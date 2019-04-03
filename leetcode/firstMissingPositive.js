@@ -12,3 +12,12 @@ Example 3:
 
 Input: [7,8,9,11,12]
 Output: 1 */
+
+var firstMissingPositive = function(nums) {
+    const unique = new Set(nums)
+    let num = 1;
+    while (true) {
+        if (!unique.has(num)) return num
+        num++
+    }
+};
