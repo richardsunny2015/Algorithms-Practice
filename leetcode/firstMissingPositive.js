@@ -14,10 +14,12 @@ Input: [7,8,9,11,12]
 Output: 1 */
 
 var firstMissingPositive = function(nums) {
-    const unique = new Set(nums)
-    let num = 1;
-    while (true) {
-        if (!unique.has(num)) return num
-        num++
+    const unique = new Set(nums) // create a set and pass in the nums array
+    // it should filter out non-unique numbers
+    let num = 1; // set num to 1
+    while (true) { // loop forever
+        if (!unique.has(num)) return num // if num is not included in unique, we will return it
+        // and therefore break the loop
+        num++ // increment num each loop
     }
 };
