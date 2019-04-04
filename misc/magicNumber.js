@@ -11,3 +11,27 @@
      8: 2^2 + 0^2 = 4
      9: 4^2 = 16 */
 
+function magicNumber(target) {
+    if (target === 0) return 1;
+    if (target < 0) return 0;
+    let count = 1; // keep count
+    let num = target
+    do {
+        count++
+        num = sumSquare(num)
+    } while (target !== num)
+    return count
+}
+
+function sumSquare(num) {
+    let sum = 0;
+    while (num > 0) {
+        const lastDigit = num % 10;
+        sum += lastDigit ** 2;
+        num = Math.floor(num / 10)
+    }
+    return sum;
+}
+
+
+console.log(magicNumber(-1))
