@@ -14,9 +14,12 @@
 function magicNumber(target) {
     if (target === 0) return 1;
     if (target < 0) return 0;
+    let set = new Set()
     let count = 1; // keep count
     let num = target
     do {
+        if (set.has(num)) return 0;
+        set.add(num)
         count++
         num = sumSquare(num)
     } while (target !== num)
@@ -34,4 +37,16 @@ function sumSquare(num) {
 }
 
 
-console.log(magicNumber(-1))
+console.log(magicNumber(21))
+
+// 2 1 = 5
+/* 5 = 25
+2 5 = 29
+2 9 = 85
+8 5 = 89
+8 9 = 145
+1 4 5 = 42
+4 2 = 20
+2 = 4
+4 = 16
+1 6 =  */
