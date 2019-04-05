@@ -12,26 +12,27 @@
      9: 4^2 = 16 */
 
 function magicNumber(target) {
-    if (target === 0) return 1;
+    if (target === 0) return 1; // some edge cases
     if (target < 0) return 0;
-    let set = new Set()
+    let set = new Set() // create a set to check if we're repeating numbers
     let count = 1; // keep count
-    let num = target
-    do {
-        if (set.has(num)) return 0;
-        set.add(num)
-        count++
-        num = sumSquare(num)
-    } while (target !== num)
-    return count
+    let num = target; // instantiate a variable that we are going to change as we iterate
+    do { // use do while so that we always at least loop once.
+        if (set.has(num)) return 0; // if we encounter a num that we saw before, return 0
+        // to prevent a forever loop
+        set.add(num); // otherwise, add the num to the set
+        count++; // increment count
+        num = sumSquare(num); // calculate new num
+    } while (target !== num) // if target is equal to num, break out the loop
+    return count;
 }
 
 function sumSquare(num) {
-    let sum = 0;
-    while (num > 0) {
-        const lastDigit = num % 10;
-        sum += lastDigit ** 2;
-        num = Math.floor(num / 10)
+    let sum = 0; // instantiate sum at zero
+    while (num > 0) { // loop til num is 0
+        const lastDigit = num % 10; // take the last digit off
+        sum += lastDigit ** 2; // add the square of that digit to sum
+        num = Math.floor(num / 10); // num is equal to the previous num without the last digit
     }
     return sum;
 }
