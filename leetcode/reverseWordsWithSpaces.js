@@ -23,3 +23,35 @@ A word is defined as a sequence of non-space characters.
 Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.
 You need to reduce multiple spaces between two words to a single space in the reversed string.
  */
+
+var reverseWords = function(s) {
+    const arr = buildArr(s);
+    let head = 0,
+        tail = arr.length - 1;
+    while (head < tail) {
+        let temp = arr[head];
+        arr[head] = arr[tail];
+        arr[tail] = temp;
+        head++;
+        tail--;
+    }
+    return arr.join(' ');
+};
+
+function buildArr(s) {
+    let arr = [],
+        i = 0;
+    while (i < s.length) {
+        if (s[i] !== ' ') {
+            let word = '';
+            for (let j = i; j < s.length; j++) {
+                if (s[j] === ' ') break;
+                else word += s[j];
+                i = j
+            }
+            arr.push(word);
+        }
+        i++;
+    }
+    return arr;
+}
