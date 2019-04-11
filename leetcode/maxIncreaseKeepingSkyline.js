@@ -40,3 +40,30 @@ they are a 1 x 1 x grid[i][j] rectangular prism.
 
 */
 
+function maxIncreaseKeepingSkyline(grid) {
+    const [maxRows, maxCols] = maxHeights(grid);
+    let sum = 0;
+    for (let row = 0; row < grid.length; row++) {
+        for (let col = 0; col < grid.length; col++) {
+            const building = grid[row][col],
+                  min = Math.min(maxRows[row], maxCols[col]);
+            sum += min - building;
+        }
+    }
+    return sum;
+}
+
+function maxHeights(grid) {
+    const maxRows = (new Array(grid.length)).fill(0),
+          maxCols = (new Array(grid.length)).fill(0);
+    for (let row = 0; row < grid.length; row++) {
+        maxRows[row] = Math.max(...grid[row]);
+        for (let col = 0; col < grid.length; col++) {
+            maxCols[col] = Math.max(
+                maxCols[col],
+                grid[row][col]
+            )
+        }
+    }
+    return [maxRows, maxCols]
+}
