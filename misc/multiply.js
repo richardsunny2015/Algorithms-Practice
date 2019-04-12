@@ -1,3 +1,9 @@
+/*
+Given two numbers, multiply them without the use of
+the '*' and the '/' operator.
+*/
+
+
 function multiply(num1, num2) {
     // choose bigger of two numbers bc 12 * 6 is same 6 * 12 but with 6 we can do less operations
     let smaller = num1 < num2 ? num1 : num2;
