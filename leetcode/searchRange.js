@@ -17,19 +17,22 @@ Output: [-1,-1]
 */
 
 function searchRange(nums, target) {
-    const initialIndex = binarySearch(nums, target, nums.length - 1, 0);
-    if (initialIndex < 0) return [-1, -1];
-    const results = [initialIndex, initialIndex];
+    const initialIndex = binarySearch(nums, target, nums.length - 1, 0); /* find initial
+    index where element matches target */
+    if (initialIndex < 0) return [-1, -1]; // if the index is -1
+    const results = [initialIndex, initialIndex]; /* initial result is just the initial
+    index twice */
     let lower = initialIndex - 1;
     let upper = initialIndex + 1;
-    while (nums[lower] === target || nums[upper] === target) {
+    while (nums[lower] === target || nums[upper] === target) { /* loop until nums at lower
+        and nums at upper are not equal to target */
         if (nums[lower] === target) {
-            results[0] = lower;
-            lower--;
+            results[0] = lower; // keep setting results at 0 to lower index
+            lower--; // decrement
         }
         if (nums[upper] === target) {
-            results[1] = upper;
-            upper++;
+            results[1] = upper; // keep setting results at 1 to upper index
+            upper++; // increment
         }
     }
     return results;
