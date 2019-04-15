@@ -15,3 +15,31 @@ Example 2:
 Input: nums = [5,7,7,8,8,10], target = 6
 Output: [-1,-1]
 */
+
+function searchRange(nums, target) {
+    const initialIndex = binarySearch(nums, target, nums.length - 1, 0);
+    if (initialIndex < 0) return [-1, -1];
+    const results = [initialIndex, initialIndex];
+    let lower = initialIndex - 1;
+    let upper = initialIndex + 1;
+    while (nums[lower] === target || nums[upper] === target) {
+        if (nums[lower] === target) {
+            results[0] = lower;
+            lower--;
+        }
+        if (nums[upper] === target) {
+            results[1] = upper;
+            upper++;
+        }
+    }
+    return results;
+}
+
+function binarySearch(nums, target, upper, lower) {
+    if (upper < lower) return -1;
+    const mid = Math.floor((upper - lower) / 2) + lower;
+    const current = nums[mid];
+    if (current === target) return mid;
+    if (current < target) return binarySearch(nums, target, upper, mid + 1);
+    return binarySearch(nums, target, mid - 1, lower);
+}
