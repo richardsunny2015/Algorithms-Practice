@@ -23,5 +23,5 @@
          "Fizz"
          (mod-5? n)
          "Buzz"
-         :default
+         :else
          (str n)))
