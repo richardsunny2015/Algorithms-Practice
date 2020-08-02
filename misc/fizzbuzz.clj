@@ -5,7 +5,9 @@
    that takes a number, n, and returns true
    if n % m is equal to 0, false otherwise."
    [m]
-   (fn [n] (= (mod n m) 0)))
+   (fn [n]
+     (->> (mod n m)
+          (= 0))))
 
 (def mod-3? (mod-m? 3))
 
