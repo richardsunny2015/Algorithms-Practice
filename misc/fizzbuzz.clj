@@ -13,7 +13,7 @@
 
 (def mod-5? (mod-m? 5))
 
-(defn fizzbuzz
+(defn fizzbuzz-single-value
   "Takes a number n and returns the string Fizz if n is
    divisable by 3, the string Buzz if n is divisable by
    5, the string FizzBuzz if divisable by 3 and 5, or
@@ -27,3 +27,13 @@
          "Buzz"
          :else
          (str n)))
+
+(defn fizzbuzz
+  "Takes a number x and returns a list of FizzBuzz
+   string representations from 1 to x. If x is not
+   a positive integer, returns nil."
+   [x]
+   (when (pos? x)
+     (->> (inc x)
+          (range 1)
+          (map fizzbuzz-single-value))))
